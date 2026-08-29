@@ -172,6 +172,8 @@ def main():
             os.getenv("BARK_DEVICE_KEY", ""),
             os.getenv("BARK_SERVER_URL", ""),
             os.getenv("SERVER3_SEND_KEY", ""),
+            os.getenv("TELEGRAM_BOT_TOKEN", ""),
+            os.getenv("TELEGRAM_CHAT_ID", ""),
         ],
     )
 

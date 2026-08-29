@@ -54,12 +54,22 @@ Secrets 中。
 3. 将获得的AppKey写入Github Secrets，`Name`字段为`SERVER3_SEND_KEY`。具体可参考本文的`2. 设置 GitHub Secrets`部分。
 4. 下载[APP](https://sc3.ft07.com/client)并登入。
 
+#### Telegram Bot
+
+1. 在 Telegram 中向 [@BotFather](https://t.me/BotFather) 创建机器人，获得 Bot Token。
+2. 向该机器人发送一条消息，然后通过 `https://api.telegram.org/bot<Bot Token>/getUpdates` 查询目标会话的 `chat.id`。
+3. 在 GitHub Secrets 中新增以下值：
+   - `TELEGRAM_BOT_TOKEN`：BotFather 提供的 Token。
+   - `TELEGRAM_CHAT_ID`：上一步获得的 `chat.id`（群组也可使用对应 ID）。
+
+配置后，签到结果会通过 Telegram Bot 发送；它可与 Bark、Server酱3同时启用。
+
 ## 注意事项
 
 - 确保 `TOKEN` 的安全性，不要将其直接写在代码中。
 - 如果需要修改定时任务的执行时间，可以编辑 [`.github/workflows/auto_sign.yaml`](.github/workflows/auto_checkin.yaml) 文件中的
   `cron` 表达式。
-- 如需查看更详细的排查日志，可以在 Secrets 中添加 `DEBUG=true`，日志会自动对 TOKEN、Bark、Server酱等敏感值进行脱敏。
+- 如需查看更详细的排查日志，可以在 Secrets 中添加 `DEBUG=true`，日志会自动对 TOKEN、Bark、Server酱、Telegram 等敏感值进行脱敏。
 
 ## 特别感谢
 
